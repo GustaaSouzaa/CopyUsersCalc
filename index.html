@@ -6,21 +6,51 @@
     <title>Pesquisa de Originalidade</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #formulario {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
         label {
             display: block;
             margin-bottom: 5px;
+            color: #333;
         }
 
         input, button {
+            width: 100%;
+            padding: 8px;
             margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
         }
 
         p {
             margin-top: 10px;
+            color: #333;
         }
     </style>
     <script>
@@ -57,22 +87,24 @@
     </script>
 </head>
 <body>
-    <h1>Pesquisa de Originalidade</h1>
-    <label for="numero_de_entrada">Número de entrada:</label>
-    <input type="text" id="numero_de_entrada" required><br>
+    <div id="formulario">
+        <h1>Pesquisa de Originalidade</h1>
+        <label for="numero_de_entrada">Número de entrada:</label>
+        <input type="text" id="numero_de_entrada" required><br>
 
-    <label for="total_itens">Total de itens:</label>
-    <input type="text" id="total_itens" required><br>
+        <label for="total_itens">Total de itens:</label>
+        <input type="text" id="total_itens" required><br>
 
-    <label>Tipos de pesquisa:</label>
-    <input type="checkbox" id="Original"> Original
-    <input type="checkbox" id="Recreation"> Re-creation
-    <input type="checkbox" id="Inpersonation"> Inpersonation
-    <input type="checkbox" id="HighVerticalMiddleRandom"> High Vertical/Middle/Random<br>
+        <label>Tipos de pesquisa:</label>
+        <input type="checkbox" id="Original"> Original
+        <input type="checkbox" id="Recreation"> Re-creation
+        <input type="checkbox" id="Inpersonation"> Inpersonation
+        <input type="checkbox" id="HighVerticalMiddleRandom"> High Vertical/Middle/Random<br>
 
-    <button type="button" onclick="calcular()">Calcular</button>
+        <button type="button" onclick="calcular()">Calcular</button>
 
-    <p id="resultado"></p>
-    <p id="classificacao"></p>
+        <p id="resultado"></p>
+        <p id="classificacao"></p>
+    </div>
 </body>
 </html>
