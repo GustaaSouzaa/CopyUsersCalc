@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisa de Originalidade</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, button {
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function calcular() {
+            var numeroDeEntrada = parseInt(document.getElementById('numero_de_entrada').value);
+            var totalItens = parseInt(document.getElementById('total_itens').value);
+
+            if (isNaN(numeroDeEntrada) || isNaN(totalItens) || numeroDeEntrada < 0 || totalItens <= 0) {
+                document.getElementById('resultado').innerHTML = "O número de entrada e o total de itens devem ser números inteiros maiores que zero.";
+                document.getElementById('classificacao').innerHTML = "";
+                return;
+            }
+
+            var resultado = (1 - numeroDeEntrada / totalItens) * 100;
+
+            document.getElementById('resultado').innerHTML = "Para o número " + numeroDeEntrada + " em um total de " + totalItens + ", o resultado da pesquisa é " + resultado.toFixed(2) + "%.";
+
+            var tiposPesquisa = document.getElementById('HighVerticalMiddleRandom').checked;
+            if (tiposPesquisa) {
+                var classificacao = "";
+                if (resultado > 90) {
+                    classificacao = "High";
+                } else if (resultado >= 60 && resultado <= 90) {
+                    classificacao = "Middle";
+                } else {
+                    classificacao = "Random";
+                }
+
+                document.getElementById('classificacao').innerHTML = "Classificação: " + classificacao;
+            } else {
+                document.getElementById('classificacao').innerHTML = "";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Pesquisa de Originalidade</h1>
+    <label for="numero_de_entrada">Número de entrada:</label>
+    <input type="text" id="numero_de_entrada" required><br>
+
+    <label for="total_itens">Total de itens:</label>
+    <input type="text" id="total_itens" required><br>
+
+    <label>Tipos de pesquisa:</label>
+    <input type="checkbox" id="Original"> Original
+    <input type="checkbox" id="Recreation"> Re-creation
+    <input type="checkbox" id="Inpersonation"> Inpersonation
+    <input type="checkbox" id="HighVerticalMiddleRandom"> High Vertical/Middle/Random<br>
+
+    <button type="button" onclick="calcular()">Calcular</button>
+
+    <p id="resultado"></p>
+    <p id="classificacao"></p>
+</body>
+</html>
